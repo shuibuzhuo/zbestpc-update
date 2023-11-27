@@ -5,9 +5,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: {
     index: './src/index.js',
     login: './src/login.js',
@@ -32,6 +33,13 @@ module.exports = {
         },
         generator: {
           filename: 'images/[name].[hash:6][ext]',
+        },
+      },
+      {
+        test: /\.ejs$/,
+        loader: 'ejs-loader',
+        options: {
+          esModule: false,
         },
       },
     ],
@@ -63,6 +71,7 @@ module.exports = {
       filename: 'css/[name].css',
       chunkFilename: 'css/[name].chunk.css',
     }),
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     static: {
@@ -78,5 +87,22 @@ module.exports = {
       new UglifyJSWebpackPlugin({ sourceMap: true }),
       new OptimizeCSSAssetsPlugin(),
     ],
+    splitChunks: {
+      minSize: 30 * 1024,
+      chunks: 'all',
+      name: 'common',
+      cacheGroups: {
+        jquery: {
+          name: 'jquery',
+          test: /jquery\.js/,
+          chunks: 'all',
+        },
+        'lodash-es': {
+          name: 'lodash-es',
+          test: /lodash-es/,
+          chunks: 'all',
+        },
+      },
+    },
   },
 };
