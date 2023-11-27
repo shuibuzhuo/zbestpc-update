@@ -11,76 +11,71 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
 module.exports = {
   mode: 'development',
   entry: {
-    index: path.resolve(__dirname, '../src/main.js')
+    index: path.resolve(__dirname, '../src/main.js'),
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCSSExtractPlugin.loader, 'css-loader']
+        use: [MiniCSSExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 8 * 1024
-          }
+            maxSize: 8 * 1024,
+          },
         },
         generator: {
-          filename: 'images/[name].[hash:6][ext]'
-        }
+          filename: 'images/[name].[hash:6][ext]',
+        },
       },
       {
         test: /\.ejs$/,
         loader: 'ejs-loader',
         options: {
-          esModule: false
-        }
+          esModule: false,
+        },
       },
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
-      }
-    ]
+        loader: 'vue-loader',
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './src/index.html',
-      chunks: ['index']
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'login.html',
-      template: './src/login.html',
-      chunks: ['login']
+      template: path.resolve(__dirname, '../public/index.html'),
+      chunks: ['index'],
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, '../src/img'),
-          to: path.resolve(__dirname, '../dist/img')
-        }
-      ]
+          to: path.resolve(__dirname, '../dist/img'),
+        },
+      ],
     }),
     new CleanWebpackPlugin(),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist')
+      directory: path.join(__dirname, 'dist'),
     },
     compress: true,
     port: 9000,
-    hot: true
+    hot: true,
   },
   optimization: {
     minimize: true,
@@ -93,14 +88,14 @@ module.exports = {
         jquery: {
           name: 'jquery',
           test: /jquery\.js/,
-          chunks: 'all'
+          chunks: 'all',
         },
         'lodash-es': {
           name: 'lodash-es',
           test: /lodash-es/,
-          chunks: 'all'
-        }
-      }
-    }
-  }
+          chunks: 'all',
+        },
+      },
+    },
+  },
 };

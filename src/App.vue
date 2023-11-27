@@ -6,9 +6,9 @@
 export default {
   data() {
     return {
-      message: 'hello shuibuzhuo'
+      message: 'hello shuibuzhuo!!!!',
     };
-  }
+  },
 };
 </script>
 
