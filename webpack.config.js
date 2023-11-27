@@ -2,6 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -17,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCSSExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -56,10 +59,24 @@ module.exports = {
         },
       ],
     }),
+    new MiniCSSExtractPlugin({
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].chunk.css',
+    }),
   ],
   devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
+    },
     compress: true,
     port: 9000,
     hot: true,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new UglifyJSWebpackPlugin({ sourceMap: true }),
+      new OptimizeCSSAssetsPlugin(),
+    ],
   },
 };
