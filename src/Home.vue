@@ -2,6 +2,7 @@
   <div>
     <!------------------------------head------------------------------>
     <div class="head">
+      {{ msg }}
       <div class="wrapper clearfix">
         <div class="clearfix" id="top">
           <h1 class="fl">
@@ -9,7 +10,7 @@
           </h1>
           <div class="fr clearfix" id="top1">
             <p class="fl">
-              <a href="login.html" id="login">登录</a>
+              <a @click="jumpToLogin" id="login">登录</a>
               <a href="#" id="reg">注册</a>
             </p>
             <form action="#" method="get" class="fl">
@@ -429,18 +430,21 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import './css/public.css';
 import './css/index.css';
 
 import './js/public';
 import './js/nav';
 
-export default {
-  methods: {
-    jumpToLogin() {
-      this.$router.push('/login');
-    },
-  },
-};
+import { useRouter } from 'vue-router';
+import { ref } from 'vue';
+
+const msg = ref('hello hamo');
+
+const router = useRouter();
+
+function jumpToLogin() {
+  router.push('/login');
+}
 </script>
