@@ -9,7 +9,7 @@
           </h1>
           <div class="fr clearfix" id="top1">
             <p class="fl">
-              <a @click="jumpToLogin" id="login">登录</a>
+              <a href="login.html" id="login">登录</a>
               <a href="#" id="reg">注册</a>
             </p>
             <form action="#" method="get" class="fl">
