@@ -66,6 +66,7 @@ module.exports = {
         },
       ],
     }),
+    new MiniCSSExtractPlugin(),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
   ],

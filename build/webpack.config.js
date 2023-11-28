@@ -11,71 +11,72 @@ module.exports = {
   mode: 'development',
   entry: {
     index: path.resolve(__dirname, '../src/index.js'),
-    login: path.resolve(__dirname, '../src/login.js')
+    login: path.resolve(__dirname, '../src/login.js'),
   },
   output: {
     filename: 'js/[name].js',
-    path: path.resolve(__dirname, '../dist')
+    path: path.resolve(__dirname, '../dist'),
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCSSExtractPlugin.loader, 'css-loader']
+        use: [MiniCSSExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            maxSize: 8 * 1024
-          }
+            maxSize: 8 * 1024,
+          },
         },
         generator: {
-          filename: 'images/[name].[hash:6][ext]'
-        }
+          filename: 'images/[name].[hash:6][ext]',
+        },
       },
       {
         test: /\.ejs$/,
         loader: 'ejs-loader',
         options: {
-          esModule: false
-        }
-      }
-    ]
+          esModule: false,
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/index.html',
-      chunks: ['index']
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       filename: 'login.html',
       template: './src/login.html',
-      chunks: ['login']
+      chunks: ['login'],
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, '../src/img'),
-          to: path.resolve(__dirname, '../dist/img')
-        }
-      ]
+          to: path.resolve(__dirname, '../dist/img'),
+        },
+      ],
     }),
-    new CleanWebpackPlugin()
+    new MiniCSSExtractPlugin(),
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist')
+      directory: path.join(__dirname, 'dist'),
     },
     compress: true,
     port: 9000,
-    hot: true
+    hot: true,
   },
   optimization: {
     minimize: true,
@@ -88,14 +89,14 @@ module.exports = {
         jquery: {
           name: 'jquery',
           test: /jquery\.js/,
-          chunks: 'all'
+          chunks: 'all',
         },
         'lodash-es': {
           name: 'lodash-es',
           test: /lodash-es/,
-          chunks: 'all'
-        }
-      }
-    }
-  }
+          chunks: 'all',
+        },
+      },
+    },
+  },
 };

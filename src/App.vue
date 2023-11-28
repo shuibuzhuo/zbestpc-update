@@ -1,15 +1,16 @@
 <template>
-  <div id="app">{{ message }}</div>
+  <div id="app">
+    <router-view />
+  </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      message: 'hello shuibuzhuo!!!!',
-    };
-  },
-};
+export default {};
 </script>
 
-<style></style>
+<style>
+#app {
+  width: 100%;
+  height: 100%;
+}
+</style>
