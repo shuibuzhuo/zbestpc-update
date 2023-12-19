@@ -66,7 +66,10 @@ module.exports = {
         },
       ],
     }),
-    new MiniCSSExtractPlugin(),
+    new MiniCSSExtractPlugin({
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[name].chunk.css',
+    }),
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
   ],
