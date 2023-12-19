@@ -54,11 +54,6 @@ module.exports = {
       template: path.resolve(__dirname, '../public/index.html'),
       chunks: ['index'],
     }),
-    new HtmlWebpackPlugin({
-      filename: 'login.html',
-      template: path.resolve(__dirname, '../public/login.html'),
-      chunks: ['login'],
-    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
