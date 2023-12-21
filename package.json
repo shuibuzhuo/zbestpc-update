@@ -12,7 +12,8 @@
     "build:vue": "webpack --config build/webpack.vue.config.js",
     "build:mpa": "webpack --config build/webpack.vue.mpa.config.js",
     "build:vue3": "webpack --config build/webpack.vue3.config.js",
-    "start:z": "shuibuzhuo-build start --debug"
+    "start:z": "shuibuzhuo-build start --debug",
+    "start:z-vue": "shuibuzhuo-build start --config shuibuzhuo-config.vue.json --debug"
   },
   "keywords": [],
   "author": "",
