@@ -13,12 +13,14 @@
     "build:mpa": "webpack --config build/webpack.vue.mpa.config.js",
     "build:vue3": "webpack --config build/webpack.vue3.config.js",
     "start:z": "shuibuzhuo-build start --debug",
-    "start:z-vue": "shuibuzhuo-build start --config shuibuzhuo-config.vue.json --debug"
+    "start:z-vue": "shuibuzhuo-build start --config shuibuzhuo-config.vue.json --debug",
+    "start:z-vue-cli": "shuibuzhuo-build start --config shuibuzhuo-config.vue.cli.json --stop-build --debug"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@vue/cli-service": "^5.0.8",
     "@vue/compiler-sfc": "3.2.20",
     "clean-webpack-plugin": "4.0.0",
     "copy-webpack-plugin": "9.0.1",

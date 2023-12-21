@@ -1,0 +1,3 @@
+{
+  "plugins": ["./plugins/vue-cli-run.js"]
+}

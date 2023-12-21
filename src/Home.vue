@@ -10,8 +10,8 @@
           </h1>
           <div class="fr clearfix" id="top1">
             <p class="fl">
-              <a @click="jumpToLogin" id="login">登录</a>
-              <a href="#" id="reg">注册</a>
+              <a @click="jumpToLogin" id="login">登录1</a>
+              <a href="#" id="reg">注册24</a>
             </p>
             <form action="#" method="get" class="fl">
               <input type="text" placeholder="热门搜索：干花花瓶" />
