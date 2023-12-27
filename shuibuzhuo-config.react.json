@@ -1,0 +1,6 @@
+{
+  "plugins": [
+    "./plugins/shuibuzhuo-build-react-plugin",
+    "./plugins/z-plugin.common.js"
+  ]
+}
