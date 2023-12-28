@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin-webpack5');
 
@@ -83,7 +82,7 @@ module.exports = {
   },
   optimization: {
     minimize: true,
-    minimizer: [new UglifyJSWebpackPlugin(), new CssMinimizerPlugin()],
+    minimizer: [new CssMinimizerPlugin()],
     splitChunks: {
       minSize: 30 * 1024,
       chunks: 'all',
