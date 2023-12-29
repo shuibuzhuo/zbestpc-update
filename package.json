@@ -14,8 +14,10 @@
     "build:mpa": "webpack --config build/webpack.vue.mpa.config.js",
     "build:vue3": "webpack --config build/webpack.vue3.config.js",
     "start:z": "shuibuzhuo-build start --debug",
+    "build:z": "shuibuzhuo-build build",
     "start:z-vue": "shuibuzhuo-build start --config shuibuzhuo-config.vue.json --debug",
     "start:z-vue-cli": "shuibuzhuo-build start --config shuibuzhuo-config.vue.cli.json --stop-build --debug",
+    "build:z-vue-cli": "shuibuzhuo-build build --config shuibuzhuo-config.vue.cli.json --stop-build --debug",
     "start:z-react": "shuibuzhuo-build start --config shuibuzhuo-config.react.json --debug",
     "dev": "vite",
     "vite-js-dev": "vite --config vite.js.config.js",
@@ -23,7 +25,9 @@
     "vite-js-build": "vite build --config vite.js.config.js",
     "vite-vue3-dev": "vite --config vite.vue3.config.js",
     "vite-vue3-preview": "vite preview --config vite.vue3.config.js",
-    "vite-vue3-build": "vite build --config vite.vue3.config.js"
+    "vite-vue3-build": "vite build --config vite.vue3.config.js",
+    "vite-z-dev": "shuibuzhuo-build start --config shuibuzhuo-config.vite-dev.json --stop-build",
+    "vite-z-build": "shuibuzhuo-build build --config shuibuzhuo-config.vite-build.json --stop-build"
   },
   "keywords": [],
   "author": "",

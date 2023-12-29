@@ -1,0 +1,3 @@
+{
+  "plugins": ["./plugins/shuibuzhuo-vite-dev-plugin.js"]
+}
